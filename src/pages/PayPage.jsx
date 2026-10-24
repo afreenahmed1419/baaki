@@ -89,14 +89,14 @@ export default function PayPage() {
         ) : out > 0 && (
           <>
             {offer && (
-              <section className="panel-red p-4 mb-3" aria-labelledby="offer">
-                <div className="kicker !text-white/80">{t('pay.offerKicker')}</div>
-                <h2 id="offer" className="display text-4xl m-0 mt-1">{t('pay.offerTitle', { pct: pctText })}</h2>
-                <p className="text-lg mt-2 mb-0">{t('pay.offerBody', { net: inr(offer.netPaise), amount: inr(out), payBy: fmtDate(offer.payBy), discount: inr(offer.discountPaise) })}</p>
+              <section className="card mb-3 !bg-[var(--brand-soft)]" aria-labelledby="offer">
+                <div className="kicker !text-[var(--ink)]">{t('pay.offerKicker')}</div>
+                <h2 id="offer" className="text-3xl m-0 mt-1">{t('pay.offerTitle', { pct: pctText })}</h2>
+                <p className="mt-2 mb-0">{t('pay.offerBody', { net: inr(offer.netPaise), amount: inr(out), payBy: fmtDate(offer.payBy), discount: inr(offer.discountPaise) })}</p>
                 {offer.status === 'accepted' ? (
-                  <p className="font-bold mt-3 mb-0 bg-white text-[var(--ink)] p-3">✓ {t('pay.offerAccepted', { net: inr(offer.netPaise), date: fmtDate(offer.promisedOn) })}</p>
+                  <p className="font-bold mt-3 mb-0 bg-white p-3 border-2 border-[var(--ink)]">✓ {t('pay.offerAccepted', { net: inr(offer.netPaise), date: fmtDate(offer.promisedOn) })}</p>
                 ) : (
-                  <div className="mt-3 bg-white text-[var(--ink)] p-3">
+                  <div className="mt-3 bg-white p-3 border-2 border-[var(--ink)]">
                     <label className="label" htmlFor="od">{t('pay.offerDate')}</label>
                     <input id="od" type="date" className="input" min={today} max={dateCap} value={pickDate} onChange={(e) => setOfferDate(e.target.value)} />
                     {err && <div className="err mt-1" role="alert">{err}</div>}

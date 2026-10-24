@@ -40,17 +40,17 @@ export default function Dashboard() {
       <h1 className="text-2xl sm:text-3xl mt-1 mb-5">{t('dash.title', { name })}</h1>
 
       {fc.firstBelow ? (
-        <section className="panel-red p-5 sm:p-7 mb-6" aria-labelledby="warn">
-          <div className="kicker !text-white/85">{t('dash.warnKicker')}</div>
-          <h2 id="warn" className="display text-5xl sm:text-7xl mt-1 mb-3">
-            {t('dash.shortBy')} <span className="bg-[var(--hi)] text-[var(--ink)] px-2">{inrShort(fc.shortfall)}</span> {t('dash.inWeek', { week: fc.firstBelow.index + 1 })}
+        <section className="card mb-6 !border-l-[10px] !border-l-[var(--bad)]" aria-labelledby="warn">
+          <span className="badge bad">{t('dash.warnKicker')}</span>
+          <h2 id="warn" className="text-2xl sm:text-3xl mt-2 mb-1">
+            {t('dash.shortBy')} <span className="text-[var(--bad)]">{inrShort(fc.shortfall)}</span> {t('dash.inWeek', { week: fc.firstBelow.index + 1 })}
           </h2>
-          <p className="text-lg max-w-2xl mt-0">
+          <p className="mt-0 mb-3 max-w-2xl">
             {t('dash.warnBody2', { date: fmtDate(fc.firstBelow.start), n: gap.picks.length })}
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link to="/rescue" className="btn light">{t('dash.fixThis')} →</Link>
-            <Link to="/forecast" className="btn !bg-transparent !text-white !border-white hover:!bg-white hover:!text-[var(--ink)]">{t('dash.seeForecast')}</Link>
+            <Link to="/rescue" className="btn">{t('dash.fixThis')} →</Link>
+            <Link to="/forecast" className="btn secondary">{t('dash.seeForecast')}</Link>
           </div>
         </section>
       ) : (

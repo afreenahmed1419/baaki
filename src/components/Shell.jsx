@@ -20,7 +20,6 @@ const NAV = [
   ['/settings', 'nav.settings'],
 ]
 const BOTTOM = ['/', '/followups', '/rescue', '/invoices']
-const two = (n) => String(n).padStart(2, '0')
 
 export default function Shell() {
   const { db, today, lang, t, setSettings } = useApp()
@@ -40,9 +39,9 @@ export default function Shell() {
           <div className="kicker mt-2">{db.business.name}</div>
         </div>
         <nav aria-label="Main" className="py-2">
-          {NAV.map(([to, key], i) => (
+          {NAV.map(([to, key]) => (
             <NavLink key={to} to={to} end={to === '/'} className={cls}>
-              <span className="n">{two(i + 1)}</span><span className="flex-1">{t(key)}</span>
+              <span className="flex-1">{t(key)}</span>
               {badge(to) > 0 && <span className="badge bad" aria-label={`${badge(to)}`}>{badge(to)}</span>}
             </NavLink>
           ))}
@@ -83,9 +82,9 @@ export default function Shell() {
       </nav>
       {open && (
         <div className="no-print md:hidden fixed inset-x-0 bottom-[58px] z-30 bg-[var(--bg)] border-t-[3px] border-[var(--rule)] p-2 grid grid-cols-2 gap-x-2">
-          {NAV.map(([to, key], i) => ({ to, key, i })).filter(({ to }) => !BOTTOM.includes(to)).map(({ to, key, i }) => (
+          {NAV.filter(([to]) => !BOTTOM.includes(to)).map(([to, key]) => (
             <NavLink key={to} to={to} onClick={() => setOpen(false)} className={cls}>
-              <span className="n">{two(i + 1)}</span><span className="flex-1">{t(key)}</span>
+              <span className="flex-1">{t(key)}</span>
               {badge(to) > 0 && <span className="badge bad">{badge(to)}</span>}
             </NavLink>
           ))}
