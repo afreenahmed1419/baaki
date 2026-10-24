@@ -1,0 +1,36 @@
+{
+  "name": "baaki",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "check": "node scripts/check-gst.mjs && node scripts/check-app.mjs && node scripts/check-scan.mjs && node scripts/check-rescue.mjs && node scripts/check-voice.mjs && node scripts/check-i18n.mjs && node scripts/smoke.mjs",
+    "e2e": "node scripts/e2e.mjs",
+    "shots": "node scripts/shots.mjs"
+  },
+  "dependencies": {
+    "@fontsource/archivo": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "@fontsource/ibm-plex-sans-devanagari": "^5.3.0",
+    "@fontsource/noto-sans-devanagari": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "qrcode": "^1.5.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.4",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.88.0",
+    "playwright-core": "^1.64.1",
+    "vite": "^8.3.4"
+  }
+}
