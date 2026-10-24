@@ -149,7 +149,7 @@ export default function VoiceDock() {
             <form onSubmit={(e) => { e.preventDefault(); run() }} className="flex gap-2">
               <label className="sr-only" htmlFor="voice-q">{t('voice.placeholder')}</label>
               <input id="voice-q" className="input" value={text} onChange={(e) => setText(e.target.value)} placeholder={t('voice.placeholder')} lang={lang === 'hi' ? 'hi' : 'en'} />
-              <button className="btn" type="submit">{t('voice.go')}</button>
+              <button className="btn shrink-0 whitespace-nowrap" type="submit">{t('voice.go')}</button>
             </form>
 
             <div aria-live="polite">
