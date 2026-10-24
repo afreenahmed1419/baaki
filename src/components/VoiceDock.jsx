@@ -112,7 +112,7 @@ export default function VoiceDock() {
 
   return (
     <>
-      <button className="no-print fixed z-40 right-3 bottom-[72px] md:bottom-6 md:right-6 flex items-center gap-2 min-h-[56px] px-4 border-2 border-[var(--ink)] bg-[var(--bad)] text-white font-extrabold cursor-pointer hover:bg-[var(--ink)]"
+      <button className="no-print fixed z-40 right-3 bottom-4 md:bottom-6 md:right-6 flex items-center gap-2 min-h-[56px] px-4 border-2 border-[var(--ink)] bg-[var(--bad)] text-white font-extrabold cursor-pointer hover:bg-[var(--ink)]"
         onClick={() => setOpen(true)} aria-haspopup="dialog" aria-label={t('voice.open')}>
         <MicIcon /><span className="hidden sm:inline">{t('voice.open')}</span>
       </button>

@@ -49,8 +49,9 @@ export default function Shell() {
         <div className="mt-auto p-4 border-t border-[var(--line)] kicker">{t('common.today')}<br /><strong className="text-[var(--ink)]">{fmtDate(today)}</strong></div>
       </aside>
 
-      <div className="flex-1 min-w-0 pb-28 md:pb-10">
-        <header className="no-print masthead flex items-center justify-between gap-2 px-4 py-2 sticky top-0 z-20">
+      <div className="flex-1 min-w-0 pb-24 md:pb-10">
+        <div className="no-print sticky top-0 z-30 bg-[var(--bg)]">
+        <header className="masthead flex items-center justify-between gap-2 px-4 py-2 max-md:!border-b">
           <div className="md:hidden display text-3xl">{t('app.name')}<span className="text-[var(--bad)]">.</span></div>
           <div className="hidden md:block kicker">{fmtDate(today)} · {db.business.name}</div>
           <div className="flex items-center gap-2">
@@ -63,33 +64,34 @@ export default function Shell() {
             </div>
           </div>
         </header>
+        <nav className="md:hidden grid grid-cols-5 border-b-[3px] border-[var(--rule)] bg-[var(--bg)]" aria-label="Main">
+          {NAV.filter(([to]) => BOTTOM.includes(to)).map(([to, key]) => (
+            <NavLink key={to} to={to} end={to === '/'} onClick={() => setOpen(false)}
+              className={({ isActive }) => `flex items-center justify-center gap-1 text-center min-h-[52px] px-1 text-[0.8rem] leading-tight font-bold no-underline ${isActive ? 'bg-[var(--hi)] text-[var(--ink)]' : 'text-[var(--ink)]'}`}>
+              {t(key)}
+              {badge(to) > 0 && <span className="badge bad !py-0 !px-1.5 text-xs">{badge(to)}</span>}
+            </NavLink>
+          ))}
+          <button onClick={() => setOpen(!open)} aria-expanded={open} className={`min-h-[52px] text-[0.8rem] font-bold border-0 cursor-pointer ${open ? 'bg-[var(--ink)] text-[var(--brand-ink)]' : 'bg-transparent text-[var(--ink)]'}`}>
+            {t('nav.more')}
+          </button>
+        </nav>
+        {open && (
+          <div className="md:hidden absolute inset-x-0 top-full z-30 bg-[var(--bg)] border-b-[3px] border-[var(--rule)] p-2 grid grid-cols-2 gap-x-2">
+            {NAV.filter(([to]) => !BOTTOM.includes(to)).map(([to, key]) => (
+              <NavLink key={to} to={to} onClick={() => setOpen(false)} className={cls}>
+                <span className="flex-1">{t(key)}</span>
+                {badge(to) > 0 && <span className="badge bad">{badge(to)}</span>}
+              </NavLink>
+            ))}
+          </div>
+        )}
+        </div>
         <main id="main" className="px-4 py-6 max-w-6xl mx-auto"><Outlet /></main>
       </div>
 
       <VoiceDock />
 
-      <nav className="no-print md:hidden fixed bottom-0 inset-x-0 z-30 bg-[var(--bg)] border-t-[3px] border-[var(--rule)] grid grid-cols-5" aria-label="Main">
-        {NAV.filter(([to]) => BOTTOM.includes(to)).map(([to, key]) => (
-          <NavLink key={to} to={to} end={to === '/'} onClick={() => setOpen(false)}
-            className={({ isActive }) => `relative flex items-center justify-center text-center min-h-[58px] px-1 text-[0.8rem] leading-tight font-bold no-underline ${isActive ? 'bg-[var(--hi)] text-[var(--ink)]' : 'text-[var(--ink)]'}`}>
-            {t(key)}
-            {badge(to) > 0 && <span className="absolute top-1 right-1 badge bad !py-0 !px-1.5 text-xs">{badge(to)}</span>}
-          </NavLink>
-        ))}
-        <button onClick={() => setOpen(!open)} aria-expanded={open} className={`min-h-[58px] text-[0.8rem] font-bold border-0 cursor-pointer ${open ? 'bg-[var(--ink)] text-[var(--brand-ink)]' : 'bg-transparent text-[var(--ink)]'}`}>
-          {t('nav.more')}
-        </button>
-      </nav>
-      {open && (
-        <div className="no-print md:hidden fixed inset-x-0 bottom-[58px] z-30 bg-[var(--bg)] border-t-[3px] border-[var(--rule)] p-2 grid grid-cols-2 gap-x-2">
-          {NAV.filter(([to]) => !BOTTOM.includes(to)).map(([to, key]) => (
-            <NavLink key={to} to={to} onClick={() => setOpen(false)} className={cls}>
-              <span className="flex-1">{t(key)}</span>
-              {badge(to) > 0 && <span className="badge bad">{badge(to)}</span>}
-            </NavLink>
-          ))}
-        </div>
-      )}
     </div>
   )
 }
