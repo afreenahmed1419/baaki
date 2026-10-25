@@ -85,12 +85,12 @@ export default function Rescue() {
           <div className="grid grid-cols-2 border-[3px] border-[var(--rule)] my-5">
             <div className="p-4 border-r-[3px] border-[var(--rule)]">
               <div className="kicker">{t('rescue.lowestBefore')}</div>
-              <div className="num-hero !text-5xl sm:!text-7xl text-[var(--bad)]">{inrShort(plan.base.lowest.closing)}</div>
+              <div className="num-hero whitespace-nowrap !text-4xl sm:!text-7xl text-[var(--bad)]">{inrShort(plan.base.lowest.closing)}</div>
               <div className="hint money">{inr(plan.base.lowest.closing)}</div>
             </div>
             <div className={`p-4 ${plan.closed ? 'bg-[var(--hi)]' : ''}`}>
               <div className="kicker !text-[var(--ink)]">{t('rescue.lowestAfter')}</div>
-              <div className="num-hero !text-5xl sm:!text-7xl">{inrShort(plan.final.lowest.closing)}</div>
+              <div className="num-hero whitespace-nowrap !text-4xl sm:!text-7xl">{inrShort(plan.final.lowest.closing)}</div>
               <div className="hint money !text-[var(--ink)]">{inr(plan.final.lowest.closing)}</div>
             </div>
           </div>

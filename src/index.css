@@ -124,7 +124,7 @@ html[lang="hi"] .stack-table th { text-transform: none; letter-spacing: 0; font-
   .stack-table, .stack-table tbody, .stack-table tr, .stack-table td { display: block; width: 100%; }
   .stack-table tr { border-bottom: 2px solid var(--rule); padding: .6rem 0; }
   .stack-table td { border: 0; padding: .15rem 0; display: flex; justify-content: space-between; gap: 1rem; text-align: right; }
-  .stack-table td::before { content: attr(data-label); font: 600 .75rem/1.6 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-align: left; }
+  .stack-table td::before { flex-shrink: 0; white-space: nowrap; content: attr(data-label); font: 600 .75rem/1.6 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-align: left; }
 }
 
 /* masthead + nav */
